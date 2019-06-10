@@ -1,0 +1,218 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import "~@angular/material/theming";
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+$custom-tata: (
+  50: #e2e2ec,
+  100: #b6b6cf,
+  200: #8585af,
+  300: #54548f,
+  400: #2f2f77,
+  500: #0a0a5f,
+  600: #090957,
+  700: #07074d,
+  800: #050543,
+  900: #030332,
+  A100: #6a6aff,
+  A200: #3983e2,
+  A400: #0404ff,
+  A700: #0000ea,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text
+  )
+);
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$cq-app-primary: mat-palette($custom-tata, 500);
+$cq-app-accent: mat-palette($custom-tata, A200);
+// The warn palette is optional (defaults to red).
+$cq-app-warn: mat-palette($mat-red);
+// Create the theme object (a Sass map containing all of the palettes).
+$cq-app-theme: mat-light-theme(
+  $cq-app-primary,
+  $cq-app-accent,
+  $cq-app-warn
+);
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($cq-app-theme);
+/* You can add global styles to this file, and also import other style files */
+
+@keyframes indicator {
+  0% {transform: scale(1)}
+  50% {transform: scale(0)}
+  100% {transform: scale(1)}
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #f1f3f6;
+}
+body {
+  margin: 0;
+  font-family: "Muli", sans-serif;
+}
+*::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #6e6e6e;
+  outline: #333 solid 1px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+h3.heading-text {
+  margin: 0;
+  text-transform: capitalize;
+  color: black;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  line-height: 55px;
+  padding: 0 16px;
+}
+.mat-form-field {
+  display: flex !important;
+  .mat-form-field-wrapper {
+    width: 100%;
+  }
+}
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+  padding-bottom: 0;
+  margin: 0 !important;
+}
+.mat-dialog-container {
+  position: relative;
+}
+.activeLink {
+  background:rgba(57,131,226,0.5);
+  color: #fff;
+}
+
+.text-ellipsis {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.icon-value-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 18px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  .icon {
+    margin-right: 16px;
+    mat-icon.mat-icon {
+      color: rgba(0, 0, 0, 0.34);
+      height: 18px;
+      width: 18px;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .value {
+    flex: 1;
+    width: calc(100% - 34px);
+
+    .value-label {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+
+      .indicator {
+        background-color: red;
+        border-radius: 50%;
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        transform: scale(1);
+        animation: indicator 1s infinite;
+      }
+
+      h5 {
+        margin: 0 0 5px 0;
+        font-size: 14px;
+        font-weight: 500;
+        color: black;
+      }
+      span {
+        color: rgba(0, 0, 0, 0.34);
+        font-size: 12px;
+        font-weight: 500;
+
+        &.color-black {
+          color: #000000;
+        }
+      }
+    }
+  }
+}
+
+.search-box {
+  padding: 10px 10px 0;
+  position: relative;
+
+  .search {
+    box-sizing: border-box;
+    display: block;
+    min-height: 24px;
+    padding: 15px 45px 12px 15px;
+    width: 100%;
+  }
+
+  .fa-close {
+    cursor: pointer;
+    font-size: 22px;
+    margin-top: 4px;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+}
+
+.cdk-overlay-pane {
+  max-width: 97vw !important;
+}

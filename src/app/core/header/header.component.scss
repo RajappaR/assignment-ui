@@ -1,0 +1,32 @@
+mat-toolbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+
+  mat-toolbar-row {
+    padding: 0;
+    .logo-toggle {
+      display: flex;
+      align-items: center;
+      .link {
+        display: flex;
+      }
+    }
+
+    .right {
+      .login-user {
+        .avatar-button {
+          height: 64px;
+          span.username {
+            margin: 0 8px;
+          }
+        }
+      }
+    }
+  }
+}
+.toggler-button{
+  margin-left: 100%;
+}

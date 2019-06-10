@@ -1,0 +1,140 @@
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .app-title {
+    color: #000;
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-right: 10px;
+    padding-left: 10px;
+    text-align: center;
+  }
+
+  .app-sub-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 25px;
+  }
+
+  .url-link {
+    display: inline-block;
+    font-size: 18px;
+    margin-top: 15px;
+  }
+
+  .pw {
+    width: 306px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 0;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.54);
+    font-weight: 600;
+    font-size:16px;
+
+    img {
+      margin-left: 8px;
+    }
+  }
+  mat-card {
+    min-width: 272px;
+    max-width: 272px;
+    padding: 17px;
+    color: #0F175C;
+
+    mat-card-header.mat-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 16px 16px 16px;
+    }
+    mat-card-content.mat-card-content {
+      margin: 0;
+      padding: 0 16px;
+
+      mat-form-field.mat-form-field {
+        width: 100%;
+
+        &:first-child {
+          margin-bottom: 16px;
+        }
+      }
+    }
+    mat-card-actions.mat-card-actions {
+      margin: 0 !important;
+      padding: 16px !important;
+      display: flex;
+
+      button.mat-raised-button.mat-primary {
+        flex: 1;
+      }
+    }
+  }
+}
+
+.login-logo{
+  width: 100%;
+  border-radius: 5px;
+}
+
+.footer-links {
+  list-style-type: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: 0;
+  padding: 15px;
+
+  li {
+    display: inline-block;
+
+    &:not(:last-child) {
+      &:after {
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        height: 25px;
+        width: 2px;
+        border-right: 1px solid #858585;
+        margin-right: 8px;
+        margin-left: 8px;
+      }
+    }
+  }
+}
+
+@media screen and(max-width:599px) {
+  .login-wrapper {
+    .app-title {
+      font-size: 24px;
+    }
+  }
+
+  .footer-links {
+    margin-top: 10px;
+    position: static;
+
+    li {
+      display: block;
+      
+      &:not(:last-child) {
+        margin-bottom: 5px;
+      }
+
+      &:after {
+        display: none !important;
+      }
+    }
+  }
+}
+
+.fontSize16{
+  font-size: 16px;
+}

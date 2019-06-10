@@ -1,0 +1,145 @@
+<div class="dialog">
+  <h1 mat-dialog-title color="primary">Signup</h1>
+  <div class="note">You must sign up to book an appointment</div>
+  <div mat-dialog-content>
+    <div class="phone-number-screen screen" *ngIf="!isPhoneValid">
+      <form>
+        <mat-form-field
+          appearance="outline"
+          hintLabel=""
+          class="marginBottom16"
+        >
+          <mat-label>Mobile number</mat-label>
+          <input
+            matInput
+            type="tel"
+            [(ngModel)]="user.phone"
+            name="phone"
+            minlength="10"
+            maxlength="10"
+            pattern="[0-9]"
+          />
+          <mat-icon matSuffix color="accent">phone</mat-icon>
+        </mat-form-field>
+        <div fxLayout="row" fxLayoutAlign="flex-end center">
+          <button mat-stroked-button color="accent" (click)="sendOtp()">
+            SEND OTP
+          </button>
+        </div>
+        <mat-form-field
+          appearance="outline"
+          hintLabel=""
+          class="marginBottom16"
+        >
+          <mat-label>Enter OTP</mat-label>
+          <input
+            matInput
+            type="tel"
+            [(ngModel)]="user.smscode"
+            name="smscode"
+            minlength="6"
+            maxlength="6"
+            pattern="0-9"
+          />
+          <mat-icon matSuffix color="accent">perm_phone_msg</mat-icon>
+        </mat-form-field>
+        <div class="actions" fxLayout="row" fxLayoutAlign="flex-end center">
+          <button mat-button (click)="cancel($event)" class="marginRight">
+            CANCEL
+          </button>
+          <button
+            mat-raised-button
+            color="accent"
+            (click)="veryOtpAndNext()"
+            [disabled]="!user.smscode"
+          >
+            Verify OTP
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class=" screen animated slideInRight" *ngIf="isPhoneValid">
+      <form>
+        <mat-form-field appearance="outline" hintLabel="">
+          <mat-label>Name</mat-label>
+          <input
+            matInput
+            type="text"
+            [(ngModel)]="user.name"
+            name="name"
+            minlength="2"
+            maxlength="50"
+          />
+          <mat-icon matSuffix color="accent">person</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" hintLabel="">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" [(ngModel)]="user.email" name="email" />
+          <mat-icon matSuffix color="accent">mail</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" hintLabel="">
+          <mat-label>Select vehicle</mat-label>
+          <input
+            type="text"
+            aria-label="vehicle name"
+            matInput
+            [formControl]="myControl"
+            [matAutocomplete]="auto"
+          />
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option
+              *ngFor="let vehicle of (filteredOptions | async)"
+              [value]="vehicle._id"
+              (click)="selectedVehicle(vehicle)"
+            >
+              {{ vehicle.name }}
+            </mat-option>
+          </mat-autocomplete>
+          <mat-icon matSuffix color="accent">directions_car</mat-icon>
+        </mat-form-field>
+        <mat-form-field
+          appearance="outline"
+          hintLabel=""
+          class="marginBottom16"
+        >
+          <mat-label>Fuel Type</mat-label>
+          <input matInput type="text" [(ngModel)]="user.fueltype" name="fuel" />
+          <mat-icon matSuffix color="accent">local_gas_station</mat-icon>
+        </mat-form-field>
+        <mat-form-field
+          appearance="outline"
+          hintLabel=""
+          class="marginBottom16"
+        >
+          <mat-label>Address Line</mat-label>
+          <input
+            matInput
+            type="text"
+            [(ngModel)]="user.address1"
+            name="address1"
+          />
+          <mat-icon matSuffix color="accent">location_city</mat-icon>
+        </mat-form-field>
+        <!--
+          <mat-form-field
+            appearance="outline"
+            hintLabel=""
+            class="marginBottom16"
+          >
+            <mat-label>City</mat-label>
+            <input matInput type="text" [(ngModel)]="user.city" name="city" />
+            <mat-icon matSuffix color="accent">location_city</mat-icon>
+          </mat-form-field>
+        -->
+        <div class="actions" fxLayout="row" fxLayoutAlign="flex-end center">
+          <button mat-button (click)="cancel($event)" class="marginRight">
+            CANCEL
+          </button>
+          <button mat-raised-button color="accent" (click)="fnished()">
+            Finish
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

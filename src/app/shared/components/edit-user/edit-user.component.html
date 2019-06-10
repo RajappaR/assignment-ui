@@ -1,0 +1,54 @@
+<span mat-dialog-title>Edit User Details</span>
+<mat-dialog-content class="mat-typography">
+    <div class="login-wrapper">
+    <mat-card class="example-card">
+        <mat-card-header fxLayoutAlign="center">
+          <mat-card-title>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+          <form>
+  
+         
+  
+            <mat-form-field appearance="outline" hintLabel="">
+                <mat-label>Name</mat-label>
+                <input matInput [(ngModel)]="user.name" name="name" required />
+              </mat-form-field>
+  
+          <mat-form-field appearance="outline" hintLabel="">
+            <mat-label>User Name</mat-label>
+            <input matInput [(ngModel)]="user.userName" name="username" required />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" hintLabel="">
+              <mat-label>Email</mat-label>
+              <input matInput [(ngModel)]="user.email" name="email" [formControl]="emailFormControl"
+              [errorStateMatcher]="matcher" />
+              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+          
+            <mat-form-field appearance="outline" hintLabel="">
+                <mat-label>User Type</mat-label>
+                <input matInput [(ngModel)]="user.userType" name="userType" required />
+              </mat-form-field>  
+  
+  
+          <mat-form-field appearance="outline" hintLabel="">
+            <mat-label>Password</mat-label>
+            <input matInput [(ngModel)]="user.password" type="password" name="password" required />
+          </mat-form-field>
+        </form>
+        </mat-card-content>
+      </mat-card> 
+      </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button (click)="editUser(user)">Save</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

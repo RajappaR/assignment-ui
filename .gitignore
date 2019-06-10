@@ -1,0 +1,47 @@
+# --------------------
+# OSX Files
+# --------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+.tern-*
+.vscode
+# --------------------
+# Node Files
+# --------------------
+.nodemonignore
+npm-debug.log
+node_modules
+# dist
+.tmp
+
+# --------------------
+# SASS Files
+# --------------------
+.sass-cache/
+
+# --------------------
+# Bower Files
+# --------------------
+.bower-*/
+bower_components
+
+ --------------------
+# App Files
+# --------------------
+app/scripts/config.js
+app/robots.txt
+data/
+test/coverage/
+modules/public/
+modules/views/
+/public/build/
+/packages/custom/
+/packages/contrib/
+reports/
+lib-cov/
+Angular_Seed_Project/js/libs/

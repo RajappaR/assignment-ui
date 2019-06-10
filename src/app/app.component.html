@@ -1,0 +1,30 @@
+<div class="main-container">
+  <app-header (toggleDrawer)="openDrawer()" *ngIf="(authState | async).authenticated"></app-header>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" id="leftSidenav" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="
+        (isHandset$ | async)
+          ? 'push'
+          : 'side'
+      " [opened]="!(isHandset$ | async) || openedDrawer"
+      [style.paddingTop.px]="(isHandset$ | async) ? '0' : '64'" *ngIf="(authState | async).authenticated">
+      <mat-toolbar color="primary" *ngIf="(isHandsopenedDraweret$ | async)">
+        Menu
+      </mat-toolbar>
+      <mat-nav-list class="padding-top">
+          <a mat-list-item routerLink="/users" routerLinkActive="activeLink">
+            <mat-icon class="margin8">list</mat-icon>Users
+          </a>
+        <a mat-list-item routerLink="/add-user" routerLinkActive="activeLink">
+          <mat-icon class="margin8">create</mat-icon>Add User
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="mat-drawer-content">
+      <section [style.paddingTop.px]="(isHandset$ | async) ? '56' : '64'">
+        <router-outlet></router-outlet>
+      </section>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+<ng4-loading-spinner [threshold]="50" [timeout]="60000"> </ng4-loading-spinner>
